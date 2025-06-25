@@ -85,30 +85,36 @@ public class JeuDeCarte {
 	public static int getRandom(int min, int max) {
 
 		int range = (max - min) + 1;
-     		int random = (int) ((range * Math.random()) + min);
+     	int random = (int) ((range * Math.random()) + min);
 		return random;
 	}
 	
 	public void melanger() {
-		
+		int i, rd;
+		ArrayList<Carte> auxAL = new ArrayList<Carte>(nbCarte);
+		for(i=nbCarte-1;i>=0;i--) {
+			rd = getRandom(0,i);
+			Carte auxC = lesCartes.remove(rd);
+			auxAL.add(auxC);
+		}
+		lesCartes = auxAL;
+	}
+	
+	public Carte tirerLast() {
+		return lesCartes.removeLast();
+	}
+	
+	public Carte tirerFirst() {
+		return lesCartes.removeFirst();
+	}
+	
+	public void AjouterLast(Carte c) {
+		lesCartes.addLast(c);
+	}
+	
+	public void AjouterFrist(Carte c) {
+		lesCartes.addFirst(c);
 	}
 	
 	
-	public static void main(String args) {
-		JeuDeCarte j1 = new JeuDeCarte(40);
-		JeuDeCarte j2 = new JeuDeCarte(54);
-		JeuDeCarte j3 = new JeuDeCarte(32);
-		
-		j1.afficherCarte();
-		System.out.println("\n");
-		System.out.println("\n");
-		System.out.println("\n");
-		System.out.println("\n");
-		j2.afficherCarte();
-		System.out.println("\n");
-		System.out.println("\n");
-		System.out.println("\n");
-		System.out.println("\n");
-		j3.afficherCarte();
-	}
 }

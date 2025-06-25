@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Carte {
 	final static String PIQUE = "pique";
 	final static String COUER = "coeur";
@@ -38,6 +40,19 @@ public class Carte {
 		}
 		return valeur + " de " + couleur;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Carte other = (Carte) obj;
+		return Objects.equals(couleur, other.couleur) && valeur == other.valeur;
+	}
+	
 	
 	
 	
